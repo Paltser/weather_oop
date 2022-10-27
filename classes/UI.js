@@ -8,6 +8,8 @@ class UI {
         this.pressure = document.querySelector('#pressure')
         this.visiblity = document.querySelector('#visibility')
 
+
+
     }
     drawWeather(data) {
         let celcius = Math.round(parseFloat(data.main.temp)-273.15);
@@ -18,16 +20,21 @@ class UI {
         let pressure = data.main.pressure
         let visibility = data.visibility
         let locationicon = data.weather[0].icon;
+        this.icon = document.querySelector('.locationIcon').setAttribute('SRC', `http://openweathermap.org/img/wn/${locationicon}@2x.png`)
+        console.log(document.querySelector('.locationIcon')
+        )
 
 
 
-        this.description.innerHTML = description + `<img src="icons/${icon}.png">`;
+
+        this.description.innerHTML = description;
         this.temp.innerHTML = celcius + `&deg;`;
         this.city.innerHTML = data.name;
         this.humidity.innerHTML = 'humidity ' + humidity + '%'
         this.wind.innerHTML = winddegree(winddeg) + ' ' +windspeed + ' m/s'
         this.pressure.innerHTML = pressure + ' psi'
         this.visiblity.innerHTML = visibility / 1000 + ' km'
+
     }
 }
 function winddegree(d) {
